@@ -48,6 +48,6 @@ void loop() {
 
     float period = (1 / (frequency)) * 1000; //ms
     Serial.print("Period(ms): ");
-    Serial.print(period);
+    Serial.println(period);
   }
 }
