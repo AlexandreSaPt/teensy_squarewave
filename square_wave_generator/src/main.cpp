@@ -35,9 +35,10 @@ void loop() {
   int potenc_value = analogRead(POTENTIOMETER_PIN); // 0 - 1023
 
   float last_frequency = frequency;
-  frequency = map(potenc_value, 0, 1023, MIN_FREQUENCY, MAX_FREQUENCY);
+  float read_frequency = map(potenc_value, 0, 1023, MIN_FREQUENCY, MAX_FREQUENCY);
 
-  if(last_frequency - FREQ_TOLERANCE <= frequency && last_frequency + FREQ_TOLERANCE >= frequency){
+  if(last_frequency - FREQ_TOLERANCE <= read_frequency && last_frequency + FREQ_TOLERANCE >= read_frequency){
+    frequency = read_frequency;
     //means that the frequency has changed
     analogWriteFrequency(PWM_PIN, frequency);
     analogWrite(PWM_PIN, ANALOG_DUTY_CYCLE);
@@ -45,6 +46,4 @@ void loop() {
     Serial.print("Frequency: ");
     Serial.println(frequency);
   }
-
-
 }
