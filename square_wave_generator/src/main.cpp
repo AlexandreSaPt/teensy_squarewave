@@ -1,7 +1,7 @@
 /** 
  * To do list
  *  - send via serial monitor the current frequency that it is sending
- *      ~ just send the value to the serial monitor when it changes
+ *      ~ just send the value to the serial monitor when it changes [DONE]
  *  - 
  */
 
