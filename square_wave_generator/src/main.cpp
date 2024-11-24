@@ -17,7 +17,7 @@
 
 #define DUTY_CYCLE 50 //%
 
-#define FREQ_TOLERANCE 0.01 //Hz
+#define FREQ_TOLERANCE 0.00 //Hz
 
 const int ANALOG_DUTY_CYCLE = round((255 * DUTY_CYCLE ) / 100); // 0 - 1023
 
@@ -37,7 +37,7 @@ void loop() {
   float last_frequency = frequency;
   frequency = map(potenc_value, 0, 1023, MIN_FREQUENCY, MAX_FREQUENCY);
 
-  if(last_frequency != frequency){
+  if(last_frequency - FREQ_TOLERANCE <= frequency && last_frequency + FREQ_TOLERANCE >= frequency){
     //means that the frequency has changed
     analogWriteFrequency(PWM_PIN, frequency);
     analogWrite(PWM_PIN, ANALOG_DUTY_CYCLE);
