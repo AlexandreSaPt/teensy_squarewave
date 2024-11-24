@@ -11,11 +11,13 @@
 #define PWM_PIN 1
 #define POTENTIOMETER_PIN 2
 
-// período de 104ms, f = 9,61538
+// period off 104ms, f = 9,61538
 #define MIN_FREQUENCY 8 //Hz
 #define MAX_FREQUENCY 11 //Hz
 
 #define DUTY_CYCLE 50 //%
+
+#define FREQ_TOLERANCE 0.01 //Hz
 
 const int ANALOG_DUTY_CYCLE = round((255 * DUTY_CYCLE ) / 100); // 0 - 1023
 
@@ -27,7 +29,6 @@ void setup() {
 
   Serial.begin(38400); //it seems that this number doesn't matter since the Teensy uses the max baud rate of the usb connection  
   Serial.println("Serial Communication is Working");
-
 }
 
 void loop() {
