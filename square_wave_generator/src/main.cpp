@@ -43,7 +43,11 @@ void loop() {
     analogWriteFrequency(PWM_PIN, frequency);
     analogWrite(PWM_PIN, ANALOG_DUTY_CYCLE);
 
-    Serial.print("Frequency: ");
-    Serial.println(frequency);
+    Serial.print("Frequency(Hz): ");
+    Serial.print(frequency);
+
+    float period = (1 / (frequency)) * 1000; //ms
+    Serial.print("Period(ms): ");
+    Serial.print(period);
   }
 }
